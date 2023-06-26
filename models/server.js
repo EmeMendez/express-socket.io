@@ -12,6 +12,7 @@ class Server {
         this.middlewares();
         this.routes();
         this.listen();
+        this.sockets();
     }
 
     routes(){
@@ -29,6 +30,16 @@ class Server {
         //     tempFileDir : '/tmp/',
         //     createParentPath: true
         // }));
+    }
+
+    //socket server
+    sockets(){
+        this.io.on('connection', socket => {
+            console.log('cliente conectado', socket.id);
+            // socket.on('disconnect', () => {
+            //     console.log('cliente desconectado');
+            // });
+        });
     }
 
     listen(){
