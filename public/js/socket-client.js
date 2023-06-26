@@ -15,7 +15,9 @@ socket.on('send-message', (payload) => {
 });
 
 $btnSend.addEventListener('click', () => {
-    const message = $txtMessage.value;
-    socket.emit('send-message', message)
+    const payload = $txtMessage.value;
+    socket.emit('send-message', payload, ( id ) => {
+        console.log('Desde el server', id);
+    });
 });
 

@@ -36,7 +36,9 @@ class Server {
     sockets(){
         this.io.on('connection', socket => {
             // console.log('cliente conectado', socket.id);
-            socket.on('send-message', ( payload ) => {
+            socket.on('send-message', ( payload, callback ) => {
+                const id = 'abc123';
+                callback(id);
                 this.io.emit('send-message', payload)
             });
         });
