@@ -10,7 +10,12 @@ socket.on('disconnect', () => {
     console.log('Desconectado del servidor');
 });
 
+socket.on('send-message', (payload) => {
+    console.log(payload);
+});
+
 $btnSend.addEventListener('click', () => {
     const message = $txtMessage.value;
     socket.emit('send-message', message)
 });
+

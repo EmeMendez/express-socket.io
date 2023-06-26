@@ -35,9 +35,9 @@ class Server {
     //socket server
     sockets(){
         this.io.on('connection', socket => {
-            console.log('cliente conectado', socket.id);
+            // console.log('cliente conectado', socket.id);
             socket.on('send-message', ( payload ) => {
-                console.log(payload);
+                this.io.emit('send-message', payload)
             });
         });
     }
